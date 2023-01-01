@@ -21,9 +21,18 @@ const Header = ({}: Props) => {
         transition={{ duration: 1.5 }}
         className='flex flex-row gap-4 items-center'
       >
-        <SocialIcon url='https://github.com/MickTheDev' />
-        <SocialIcon url='https://discord.com/users/484797560523849760' />
-        <SocialIcon url='https://www.linkedin.com/in/michał-siewierski' />
+        <SocialIcon
+          style={{ height: 35, width: 35 }}
+          url='https://github.com/MickTheDev'
+        />
+        <SocialIcon
+          style={{ height: 35, width: 35 }}
+          url='https://discord.com/users/484797560523849760'
+        />
+        <SocialIcon
+          style={{ height: 35, width: 35 }}
+          url='https://www.linkedin.com/in/michał-siewierski'
+        />
       </motion.div>
 
       <motion.div
@@ -41,6 +50,7 @@ const Header = ({}: Props) => {
         className='flex flex-row items-center text-gray-300 cursor-pointer'
       >
         <SocialIcon
+          style={{ height: 50, width: 50 }}
           className='cursor-pointer'
           network='email'
           fgColor='gray'

@@ -2,8 +2,9 @@ import React from 'react';
 import Image from 'next/image';
 import heroImg from '../public/heroImg.png';
 import { Cursor, useTypewriter } from 'react-simple-typewriter';
-import { BackgroundCircles } from '../components';
+import { BackgroundCircles, Controls } from '../components';
 import Link from 'next/link';
+
 type Props = {};
 
 const Hero = ({}: Props) => {
@@ -18,9 +19,10 @@ const Hero = ({}: Props) => {
   });
 
   return (
-    <div className='h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
+    <div className='relative h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden'>
       <BackgroundCircles />
       <Image
+        priority={true}
         src={heroImg}
         alt='Logo'
         width={144}
@@ -28,7 +30,7 @@ const Hero = ({}: Props) => {
         className='relative rounded-full mx-auto object-cover overflow-hidden w-40 h-40 md:w-64 md:h-64'
       />
       <div className='z-20'>
-        <h2 className='font-sourceCodePro font-semibold text-xl uppercase text-gray-500 mb-2 tracking-[15px]'>
+        <h2 className='font-sourceCodePro font-semibold text-xl uppercase text-gray-300 mb-2 tracking-[15px]'>
           Frontend Developer
         </h2>
         <h1 className='font-sourceCodePro font-semibold text-2xl lg:text-5xl md:px-10'>
@@ -36,7 +38,7 @@ const Hero = ({}: Props) => {
           <Cursor cursorColor='#f2f2f2' />
         </h1>
 
-        <div>
+        <div className='mt-4 flex flex-wrap items-center  justify-center gap-1'>
           <Link href='#about'>
             <button className='heroButton'>About</button>
           </Link>
@@ -50,6 +52,9 @@ const Hero = ({}: Props) => {
             <button className='heroButton'>Projects</button>
           </Link>
         </div>
+      </div>
+      <div className='hidden xl:block'>
+        <Controls />
       </div>
     </div>
   );
