@@ -1,11 +1,29 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Header, Hero, About, Skills, Projects, ScrollUp } from '../components';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const Home: NextPage = () => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [scrollY, setScrollY] = useState<number>(0);
+
+  useEffect(() => {
+    const container: any = ref.current;
+    container.focus();
+    const handleScroll = () => setScrollY(container.scrollTop);
+    container.addEventListener('scroll', handleScroll);
+
+    return () => container.removeEventListener('scroll', handleScroll);
+  });
+
   return (
-    <div className='font-poppins bg-[#1d1d1d] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 scrollbar-thin xl:overflow-y-hidden'>
+    <div
+      id='root'
+      ref={ref}
+      tabIndex={-1}
+      className='font-poppins bg-[#1d1d1d] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 scrollbar-thin xl:overflow-y-hidden'
+    >
       <Head>
         <title>MickTheDev</title>
         <meta
@@ -50,6 +68,7 @@ const Home: NextPage = () => {
       >
         <Projects />
       </section> */}
+      {scrollY > 800 && <ScrollUp />}
     </div>
   );
 };

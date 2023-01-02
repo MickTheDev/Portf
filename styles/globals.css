@@ -20,4 +20,8 @@ html {
   .heroButton {
     @apply px-6 py-2 border border-[#242424] rounded-full uppercase text-sm tracking-widest text-gray-400 transition-all hover:border-[#f7ab0a]/40 hover:text-[#f7ab0a]/40;
   }
+
+  .navLink {
+    @apply w-full relative flex items-start justify-center mr-4 md:flex-row md:items-center md:justify-center md:mb-0 md:w-fit mb-4 md:mr-4 text-[#f2f2f2] after:transition-all after:w-[3px] after:h-[0px] after:absolute after:left-0 after:bottom-0 after:bg-red-400 hover:after:h-full md:after:hidden before:transition-all before:w-[0px] before:h-[3px] md:before:absolute before:left-0 before:bottom-0 before:bg-red-400 hover:before:w-full before:hidden md:before:block;
+  }
 }

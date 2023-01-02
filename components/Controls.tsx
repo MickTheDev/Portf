@@ -5,7 +5,7 @@ type Props = {};
 
 const Controls = ({}: Props) => {
   return (
-    <div className='absolute right-48 bottom-24 flex items-center justify-center gap-4'>
+    <div className='absolute right-48 bottom-24 flex items-center justify-center gap-4 animate-[wiggle_2.5s_ease-in-out_infinite]'>
       <span className='uppercase font-sourceCodePro tracking-widest'>
         Control
       </span>

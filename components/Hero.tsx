@@ -38,7 +38,7 @@ const Hero = ({}: Props) => {
           <Cursor cursorColor='#f2f2f2' />
         </h1>
 
-        <div className='mt-4 flex flex-wrap items-center  justify-center gap-1'>
+        {/* <div className='mt-4 flex flex-wrap items-center justify-center gap-1'>
           <Link href='#about'>
             <button className='heroButton'>About</button>
           </Link>
@@ -51,7 +51,7 @@ const Hero = ({}: Props) => {
           <Link href='#projects'>
             <button className='heroButton'>Projects</button>
           </Link>
-        </div>
+        </div> */}
       </div>
       <div className='hidden xl:block'>
         <Controls />

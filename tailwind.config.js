@@ -10,6 +10,12 @@ module.exports = {
         poppins: ['Poppins'],
         sourceCodePro: ['Source Code Pro', 'monospace'],
       },
+      keyframes: {
+        wiggle: {
+          '0%, 100%': { transform: 'translateY(-10px)' },
+          '50%': { transform: 'translateY(10px)' },
+        },
+      },
     },
   },
   plugins: [require('tailwind-scrollbar')],
