@@ -8,6 +8,7 @@ module.exports = {
     extend: {
       fontFamily: {
         poppins: ['Poppins'],
+        helvetica: ['Helvetica'],
         sourceCodePro: ['Source Code Pro', 'monospace'],
       },
       keyframes: {

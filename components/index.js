@@ -6,7 +6,9 @@ import Skills from './Skills';
 import Skill from './Skill';
 import Projects from './Projects';
 import Controls from './Controls';
+import Contact from './Contact';
 import ScrollUp from './ScrollUp';
+import Modal from './Modal';
 
 export {
   Header,
@@ -17,5 +19,7 @@ export {
   Skills,
   Projects,
   Controls,
+  Contact,
   ScrollUp,
+  Modal,
 };
