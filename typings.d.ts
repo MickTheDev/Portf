@@ -25,6 +25,20 @@ export interface PageInfo extends sanityBody {
   profilePic: Image;
 }
 
+export interface ContactType extends sanityBody {
+  _type: 'contact';
+  header1: 'string';
+  nameHeading: 'string';
+  emailHeading: 'string';
+  projectHeading: 'string';
+  button: 'string';
+  header2: 'string';
+  mail: 'string';
+  mailValue: 'email';
+  linkedin: 'string';
+  linkedinValue: 'string';
+}
+
 export interface Technology extends sanityBody {
   _type: 'skill';
   image: Image;

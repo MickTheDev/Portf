@@ -12,11 +12,12 @@ import {
 } from '../components';
 
 import { useState, useEffect, useRef } from 'react';
-import { PageInfo, Project, Skill, Social } from '../typings';
+import { PageInfo, Project, Skill, Social, ContactType } from '../typings';
 import { fetchPageInfo } from '../utils/FetchPageInfo';
 import { fetchProjects } from '../utils/FetchProjects';
 import { fetchSocials } from '../utils/fetchSocials';
 import { fetchSkills } from '../utils/FetchSkills';
+import { fetchContact } from '../utils/FetchContact';
 import { AnimatePresence } from 'framer-motion';
 
 type Props = {
@@ -24,13 +25,13 @@ type Props = {
   skills: Skill[];
   projects: Project[];
   socials: Social[];
+  contact: ContactType;
 };
 
-const Home = ({ pageInfo, skills, projects, socials }: Props) => {
+const Home = ({ pageInfo, skills, projects, socials, contact }: Props) => {
   const ref = useRef<HTMLDivElement | null>(null);
 
   const [scrollY, setScrollY] = useState<number>(0);
-  const [modalOpen, setModalOpen] = useState<boolean>(false);
   const [size, setSize] = useState<{
     width: number | undefined;
     height: number | undefined;
@@ -59,15 +60,6 @@ const Home = ({ pageInfo, skills, projects, socials }: Props) => {
 
     return () => window.removeEventListener('resize', handleResize);
   }, []);
-
-  useEffect(() => {
-    if (size.width) {
-      if (size.width > 768) setModalOpen(false);
-    }
-  }, [size]);
-
-  const handleOpen = () => setModalOpen(true);
-  const handleClose = () => setModalOpen(false);
 
   return (
     <div
@@ -106,7 +98,7 @@ const Home = ({ pageInfo, skills, projects, socials }: Props) => {
       >
         <About
           pageInfo={pageInfo}
-          handleOpen={handleOpen}
+          size={size}
         />
       </section>
 
@@ -116,29 +108,22 @@ const Home = ({ pageInfo, skills, projects, socials }: Props) => {
       >
         <Skills skills={skills} />
       </section>
+      <section
+        id='projects'
+        className='snap-start'
+      >
+        <Projects projects={projects} />
+      </section>
 
       <section
         id='contact'
         className='snap-start'
       >
-        <Contact />
+        <Contact contact={contact} />
       </section>
 
-      {/* <section
-        id='projects'
-        className='snap-start'
-      >
-        <Projects />
-      </section> */}
       <AnimatePresence>{scrollY > 200 && <ScrollUp />}</AnimatePresence>
-      <AnimatePresence>
-        {modalOpen && (
-          <Modal
-            pageInfo={pageInfo}
-            handleClose={handleClose}
-          />
-        )}
-      </AnimatePresence>
+      <AnimatePresence></AnimatePresence>
     </div>
   );
 };
@@ -147,6 +132,7 @@ export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const pageInfo: PageInfo = await fetchPageInfo();
+  const contact: ContactType = await fetchContact();
   const skills: Skill[] = await fetchSkills();
   const projects: Project[] = await fetchProjects();
   const socials: Social[] = await fetchSocials();
@@ -157,6 +143,7 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
       skills,
       projects,
       socials,
+      contact,
     },
     revalidate: 10,
   };

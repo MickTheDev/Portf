@@ -1,15 +1,27 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Modal } from '.';
 import Image from 'next/image';
 import { PageInfo } from '../typings';
 import { urlFor } from '../sanity';
 
 type Props = {
+  size: any;
   pageInfo: PageInfo;
-  handleOpen: any;
 };
 
-const About = ({ handleOpen, pageInfo }: Props) => {
+const About = ({ pageInfo, size }: Props) => {
+  const [modalOpen, setModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (size.width) {
+      if (size.width > 768) setModalOpen(false);
+    }
+  }, [size]);
+
+  const handleOpen = () => setModalOpen(true);
+  const handleClose = () => setModalOpen(false);
+
   return (
     <motion.div
       initial={{
@@ -64,6 +76,14 @@ const About = ({ handleOpen, pageInfo }: Props) => {
           See more...
         </button>
       </div>
+      <AnimatePresence>
+        {modalOpen && (
+          <Modal
+            data={pageInfo.backgroundInformation}
+            handleClose={handleClose}
+          />
+        )}
+      </AnimatePresence>
     </motion.div>
   );
 };

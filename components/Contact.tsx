@@ -6,83 +6,66 @@ import {
   BsArrowRightShort,
   BsReply,
   BsWhatsapp,
-  BsMessenger,
+  BsLinkedin,
 } from 'react-icons/bs';
+import { ContactType } from '../typings';
 
-type Props = {};
+type Props = {
+  contact: ContactType;
+};
 
-const Contact = (props: Props) => {
+const Contact = ({ contact }: Props) => {
   return (
-    <div className='relative md:h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden max-w-7xl mx-auto'>
+    <div className='relative h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden max-w-7xl mx-auto'>
       <h3 className='absolute top-20 uppercase tracking-[20px] font-helvetica font-semibold text-2xl text-gray-300 pl-4'>
         Contact
       </h3>
 
-      <div className='w-full flex flex-col md:flex-row justify-center items-start gap-24 pt-32 md:px-10'>
-        <div className='flex flex-col justify-center items-center w-screen px-10 md:px-0 md:w-[300px] relative'>
+      <div className='w-full flex flex-col md:flex-row justify-center items-start gap-12 pt-32 md:px-10'>
+        <div className='flex-col justify-center items-center w-screen px-10 md:px-0 md:w-[300px] relative hidden md:flex'>
           <h3 className='text-center font-helvetica mb-6 text-3xl font-semibold'>
-            Talk to me
+            {contact.header2}
           </h3>
 
-          <div className='w-full flex flex-col justify-center items-center gap-4'>
+          <div className='w-full flex flex-col justify-center items-center gap-6'>
             <div className='contactCard'>
               <BsReply
                 size={30}
                 className='contactCardIcon mb-4'
               />
-              <h3 className='font-semibold'>Email</h3>
-              <span className='text-[#fff]/60 mb-2'>
-                siewierskimichal1@gmail.com
-              </span>
+              <h3 className='font-semibold'>{contact.mail}</h3>
+              <span className='text-[#fff]/60 mb-2'>{contact.mailValue}</span>
 
-              <Link
+              <a
                 href='mailto:siewierskimichal1@gmail.com'
                 className='flex flex-row justify-center items-center text-[#fff]/60 group'
               >
-                Write me{' '}
+                {contact.header1}{' '}
                 <BsArrowRightShort
                   size={30}
-                  className='contactCardIcon group-hover:translate-x-[5px] ease-in-out duration-300'
+                  className='contactCardIcon group-hover:translate-x-[5px] transition-all'
                 />
-              </Link>
+              </a>
             </div>
 
             <div className='contactCard'>
-              <BsWhatsapp
+              <BsLinkedin
                 size={30}
                 className='contactCardIcon mb-4'
               />
-              <h3 className='font-semibold'>Whatsapp</h3>
-              <span className='text-[#fff]/60 mb-2'>000-000-000</span>
+              <h3 className='font-semibold'>{contact.linkedin}</h3>
+              <span className='text-[#fff]/60 mb-2'>
+                {contact.linkedinValue}
+              </span>
 
               <Link
-                href='/'
+                href='https://www.linkedin.com/in/micha%C5%82-siewierski/'
                 className='flex flex-row justify-center items-center text-[#fff]/60 group'
               >
-                Write me{' '}
+                {contact.header1}{' '}
                 <BsArrowRightShort
                   size={30}
-                  className='contactCardIcon group-hover:translate-x-[5px] ease-in-out duration-300'
-                />
-              </Link>
-            </div>
-
-            <div className='contactCard'>
-              <BsMessenger
-                size={30}
-                className='contactCardIcon mb-4'
-              />
-              <h3 className='font-semibold'>Messenger</h3>
-              <span className='text-[#fff]/60 mb-2'>Michał Siewierski</span>
-
-              <Link
-                href='/'
-                className='flex flex-row justify-center items-center text-[#fff]/60 group'
-              >
-                Write me{' '}
-                <BsArrowRightShort
-                  size={30}
-                  className='contactCardIcon group-hover:translate-x-[5px] ease-in-out duration-300'
+                  className='contactCardIcon group-hover:translate-x-[5px] transition-all'
                 />
               </Link>
             </div>
@@ -91,7 +74,7 @@ const Contact = (props: Props) => {
 
         <div className='flex flex-col justify-center items-center w-screen px-10 md:px-0 md:w-[auto] relative'>
           <h3 className='text-center font-helvetica mb-6 text-3xl font-semibold'>
-            Write me
+            {contact.header1}
           </h3>
 
           <form
@@ -105,7 +88,7 @@ const Contact = (props: Props) => {
               <input
                 type='text'
                 name='name'
-                placeholder='Insert your name'
+                placeholder={contact.nameHeading}
                 className='absolute top-0 left-0 w-full h-full outline-none border-2 border-[#f2f2f2]/80 bg-transparent rounded-xl p-6 z-20'
                 autoComplete='off'
               />
@@ -118,7 +101,7 @@ const Contact = (props: Props) => {
               <input
                 type='email'
                 name='email'
-                placeholder='Insert your email'
+                placeholder={contact.emailHeading}
                 className='absolute top-0 left-0 w-full h-full outline-none border-2 border-[#f2f2f2]/80 bg-transparent rounded-xl p-6 z-20'
                 autoComplete='off'
               />
@@ -132,14 +115,14 @@ const Contact = (props: Props) => {
                 name='project'
                 cols={30}
                 rows={10}
-                placeholder='Write your project'
+                placeholder={contact.projectHeading}
                 className='absolute top-0 left-0 w-full h-full outline-none border-2 border-[#f2f2f2]/80 bg-transparent rounded-xl p-6 z-20 resize-none'
                 autoComplete='off'
               />
             </div>
 
-            <button className='border-2 border-[#f2f2f2]/80 w-fit py-4 px-8 rounded-xl hover:bg-[#f2f2f2]/10 ease-in-out duration-300 inline-flex gap-2'>
-              Send Message
+            <button className='border-2 w-full sm:w-fit flex justify-center sm:justify-start border-[#f2f2f2]/80 py-4 px-8 rounded-xl hover:bg-[#f2f2f2]/10 ease-in-out duration-300 gap-2'>
+              {contact.button}
               <img
                 src='/send.svg'
                 alt='sendIcon'

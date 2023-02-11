@@ -110,12 +110,12 @@ const Header = ({ socials }: Props) => {
                   Skills
                 </button>
               </Link>
-              <Link href='#experience'>
+              <Link href='#projects'>
                 <button
                   onClick={() => setMenuOpen(false)}
                   className='heroButton'
                 >
-                  Experience
+                  Projects
                 </button>
               </Link>
               <Link href='#contact'>

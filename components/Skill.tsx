@@ -25,7 +25,7 @@ const Skill = ({ directonLeft, skill }: Props) => {
       <motion.img
         src={urlFor(skill?.image).url()}
         alt='skill'
-        className='object-cover w-[5rem] h-[5rem] md:w-28 md:h-28 xl:w-32 xl:h-32 filter hover:grayscale transition duration-300 ease-in-out'
+        className='object-cover w-[5rem] h-[5rem] md:w-28 md:h-28 xl:w-32 xl:h-32 filter grayscale hover:grayscale-0 transition duration-300 ease-in-out'
       />
       <div className=''>
         <p className='text-base md:text-xl font-semibold text-white opacity-100 font-helvetica'>
