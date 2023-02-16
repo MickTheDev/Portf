@@ -33,10 +33,20 @@ const Projects = ({ projects }: Props) => {
 
   return (
     <div className='h-screen relative flex overflow-hidden flex-col text-left md:flex-row max-w-full justify-evenly mx-auto items-center z-0'>
-      <h3 className='absolute top-20 uppercase tracking-[20px] font-sourceCodePro font-semibold text-2xl text-gray-300'>
-        Projects
-      </h3>
-      <div className='w-full flex justify-between max-w-7xl mx-auto xl:items-center'>
+      <h3 className='title'>Projects</h3>
+      <motion.div
+        initial={{
+          x: -1000,
+          opacity: 0,
+        }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className='w-full flex justify-between max-w-7xl mx-auto xl:items-center z-20'
+      >
         <div className='pt-32 w-full px-8 md:px-10 xl:px-32'>
           <Swiper
             modules={[Pagination, Navigation]}
@@ -65,19 +75,21 @@ const Projects = ({ projects }: Props) => {
                     <h2 className='text-xl md:text-3xl font-semibold mb-4'>
                       {project.title}
                     </h2>
-                    <p className='mb-3 md:hidden'>
-                      {project.summary.split(' ').slice(0, 20).join(' ')}...
+                    <p className='mb-3 lg:hidden'>
+                      {project.summary.split(' ').slice(0, 20).join(' ')}...{' '}
+                      <span
+                        // className='ml-auto mb-4 rounded-xl px-4 py-2 border-2 lg:hidden'
+                        className='underline'
+                        onClick={() => {
+                          setModalValue(project.summary);
+                          handleOpen();
+                        }}
+                      >
+                        see more
+                      </span>
                     </p>
-                    <button
-                      className='ml-auto mb-4 rounded-xl px-4 py-2 border-2 md:hidden'
-                      onClick={() => {
-                        setModalValue(project.summary);
-                        handleOpen();
-                      }}
-                    >
-                      see more...
-                    </button>
-                    <p className='mb-3 hidden md:block'>{project.summary}</p>
+                    <p className='mb-3 hidden lg:block'>{project.summary}</p>
+
                     <a
                       href={project.linkToBuild}
                       className='border-2 border-transparent w-full md:w-[200px] text-center py-2 rounded-md bg-[#F7AB0A]/80 hover:bg-transparent hover:border-[#F7AB0A]/80 ease-in-out duration-300 uppercase font-semibold tracking-[4px]'
@@ -91,7 +103,6 @@ const Projects = ({ projects }: Props) => {
           </Swiper>
         </div>
 
-        <div className='w-full absolute top-[30%] bg-[#f7ab0a]/10 left-0 h-[500px] -skew-y-[10deg]'></div>
         <AnimatePresence>
           {modalOpen && (
             <Modal
@@ -100,7 +111,8 @@ const Projects = ({ projects }: Props) => {
             />
           )}
         </AnimatePresence>
-      </div>
+      </motion.div>
+      <div className='w-full absolute top-[30%] bg-[#f7ab0a]/10 left-0 h-[500px] -skew-y-[10deg]'></div>
     </div>
   );
 };

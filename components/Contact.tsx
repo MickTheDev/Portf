@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React from 'react';
+import { motion } from 'framer-motion';
 
 import {
   BsArrowRightShort,
@@ -17,11 +18,21 @@ type Props = {
 const Contact = ({ contact }: Props) => {
   return (
     <div className='relative h-screen flex flex-col space-y-8 items-center justify-center text-center overflow-hidden max-w-7xl mx-auto'>
-      <h3 className='absolute top-20 uppercase tracking-[20px] font-helvetica font-semibold text-2xl text-gray-300 pl-4'>
-        Contact
-      </h3>
+      <h3 className='title'>Contact</h3>
 
-      <div className='w-full flex flex-col md:flex-row justify-center items-start gap-12 pt-32 md:px-10'>
+      <motion.div
+        initial={{
+          x: -1000,
+          opacity: 0,
+        }}
+        whileInView={{
+          x: 0,
+          opacity: 1,
+        }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className='w-full flex flex-col md:flex-row justify-center items-start gap-12 pt-32 md:px-10'
+      >
         <div className='flex-col justify-center items-center w-screen px-10 md:px-0 md:w-[300px] relative hidden md:flex'>
           <h3 className='text-center font-helvetica mb-6 text-3xl font-semibold'>
             {contact.header2}
@@ -130,7 +141,7 @@ const Contact = ({ contact }: Props) => {
             </button>
           </form>
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
