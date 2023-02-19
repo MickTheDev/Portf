@@ -2,7 +2,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Skill } from '.';
 import { Skill as SkillType } from '../typings';
-import skill from '../sanity/schemas/skill';
 type Props = {
   skills: SkillType[];
 };
