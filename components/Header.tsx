@@ -5,7 +5,6 @@ import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import 'hamburgers/dist/hamburgers.css';
 import { Social } from '../typings';
-import social from '../sanity/schemas/social';
 
 type Props = {
   socials: Social[];
