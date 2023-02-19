@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Navigation, Pagination } from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 
 type Props = {
   projects: Project[];
@@ -49,7 +49,8 @@ const Projects = ({ projects }: Props) => {
       >
         <div className='pt-32 w-full px-8 md:px-10 xl:px-32'>
           <Swiper
-            modules={[Pagination, Navigation]}
+            modules={[Pagination, Navigation, Autoplay]}
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
             spaceBetween={50}
             slidesPerView={1}
             draggable={true}
