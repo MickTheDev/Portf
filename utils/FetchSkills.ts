@@ -7,7 +7,7 @@ export const fetchSkills = async () => {
     );
 
     const data = await res.json();
-    const skills: Skill[] = data.skills;
+    const skills: Skill[] = data;
 
     return skills;
   } catch (err) {

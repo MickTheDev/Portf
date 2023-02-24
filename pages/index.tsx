@@ -139,8 +139,8 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 
   return {
     props: {
-      pageInfo,
-      skills,
+      pageInfo: pageInfo.pageInfo,
+      skills: skills.skills,
       projects,
       socials,
       contact,
