@@ -36,14 +36,14 @@ const Projects = ({ projects }: Props) => {
       <h3 className='title'>Projects</h3>
       <motion.div
         initial={{
-          x: -1000,
+          x: -100,
           opacity: 0,
         }}
         whileInView={{
           x: 0,
           opacity: 1,
         }}
-        viewport={{ once: true }}
+        // viewport={{ once: true }}
         transition={{ duration: 0.5 }}
         className='w-full flex justify-between max-w-7xl mx-auto xl:items-center z-20'
       >

@@ -22,7 +22,7 @@ const Contact = ({ contact }: Props) => {
 
       <motion.div
         initial={{
-          x: -1000,
+          x: -300,
           opacity: 0,
         }}
         whileInView={{
@@ -93,7 +93,7 @@ const Contact = ({ contact }: Props) => {
             onSubmit={(e) => e.preventDefault()}
           >
             <div className='relative h-16'>
-              <label className='absolute -top-3 left-5 p-1 bg-[#1d1d1d] z-50 text-[#f2f2f2]/80'>
+              <label className='absolute -top-3 left-5 p-1 bg-[#141313] z-50 text-[#f2f2f2]/80'>
                 Name
               </label>
               <input
@@ -106,7 +106,7 @@ const Contact = ({ contact }: Props) => {
             </div>
 
             <div className='relative h-16'>
-              <label className='absolute -top-3 left-5 p-1 bg-[#1d1d1d] z-50 text-[#f2f2f2]/80'>
+              <label className='absolute -top-3 left-5 p-1 bg-[#141313] z-50 text-[#f2f2f2]/80'>
                 Mail
               </label>
               <input
@@ -119,7 +119,7 @@ const Contact = ({ contact }: Props) => {
             </div>
 
             <div className='relative h-[11rem]'>
-              <label className='absolute -top-3 left-5 p-1 bg-[#1d1d1d] z-50 text-[#f2f2f2]/80'>
+              <label className='absolute -top-3 left-5 p-1 bg-[#141313] z-50 text-[#f2f2f2]/80'>
                 Project
               </label>
               <textarea

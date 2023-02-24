@@ -50,7 +50,7 @@ const About = ({ pageInfo, size }: Props) => {
         transition={{ duration: 0.5 }}
         src={urlFor(pageInfo?.profilePic).url()}
         alt='Logo'
-        className='mt-16 -mb-10 md:mb-0 flex-shrink-0 w-56 h-56 rounded-full object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[500px]'
+        className='mt-16 -mb-10 md:mb-0 flex-shrink-0 w-44 h-44 rounded-full object-cover md:rounded-lg md:w-64 md:h-96 xl:w-[400px] xl:h-[500px]'
       />
 
       <div className='space-y-10 px-0 md:px-10 max-w-xl'>

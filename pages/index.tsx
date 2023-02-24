@@ -66,7 +66,7 @@ const Home = ({ pageInfo, skills, projects, socials, contact }: Props) => {
       id='root'
       ref={ref}
       tabIndex={-1}
-      className='font-helvetica bg-[#1d1d1d] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 scrollbar-thin xl:overflow-y-hidden'
+      className='font-helvetica bg-[#141313] text-white h-screen snap-y snap-mandatory overflow-y-scroll overflow-x-hidden z-0 scrollbar-track-gray-400/20 scrollbar-thumb-[#f7ab0a]/80 scrollbar-thin xl:overflow-y-hidden'
     >
       <Head>
         <title>MickTheDev</title>
@@ -131,11 +131,11 @@ const Home = ({ pageInfo, skills, projects, socials, contact }: Props) => {
 export default Home;
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
-  const pageInfo: PageInfo = await fetchPageInfo();
-  const contact: ContactType = await fetchContact();
-  const skills: Skill[] = await fetchSkills();
-  const projects: Project[] = await fetchProjects();
-  const socials: Social[] = await fetchSocials();
+  const pageInfo: any = await fetchPageInfo();
+  const contact: any = await fetchContact();
+  const skills: any = await fetchSkills();
+  const projects: any = await fetchProjects();
+  const socials: any = await fetchSocials();
 
   return {
     props: {
